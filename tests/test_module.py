@@ -16,7 +16,7 @@ from .strategies import med_ints, small_floats
 
 
 class ModuleA1(minitorch.Module):
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
         self.p1 = minitorch.Parameter(5)
         self.non_param = 10
@@ -25,25 +25,25 @@ class ModuleA1(minitorch.Module):
 
 
 class ModuleA2(minitorch.Module):
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
         self.p2 = minitorch.Parameter(10)
 
 
 class ModuleA3(minitorch.Module):
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
         self.c = ModuleA4()
 
 
 class ModuleA4(minitorch.Module):
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
         self.p3 = minitorch.Parameter(15)
 
 
 @pytest.mark.task0_4
-def test_stacked_demo() -> None:
+def test_stacked_demo():
     "Check that each of the properties match"
     mod = ModuleA1()
     np = dict(mod.named_parameters())
@@ -113,7 +113,7 @@ def test_module(size_a: int, size_b: int) -> None:
     assert named_parameters["extra_parameter_0"].value == 0
 
 
-@pytest.mark.task0_4
+@pytest.mark.task0_
 @given(med_ints, med_ints, small_floats)
 def test_stacked_module(size_a: int, size_b: int, val: float) -> None:
     "Check the properties of a stacked module"
